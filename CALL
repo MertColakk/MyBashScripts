@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ "$1" == "--help" ] && [ $# -eq 1 ]; then
+    echo "Usage: $0 <main file name> <output file name>"
+elif [ $# -eq 2 ]; then
+    c_file="$1"
+    output_file="$2"
+    g++ --std=c++17 "$c_file".cpp -o "$output_file" && ./"$output_file"
+elif [ $# -eq 3 ]; then
+    c_file="$1"
+    c2_file="$2"
+    output_file="$3"
+    g++ --std=c++17 "$c_file".cpp "$c2_file".cpp -o "$output_file" && ./"$output_file"
+elif [ $# -eq 4 ]; then
+    c_file="$1"
+    c2_file="$2"
+    c3_file="$3"
+    output_file="$4"
+    g++ --std=c++17 "$c_file".cpp "$c2_file".cpp "$c3_file".cpp -o "$output_file" && ./"$output_file"
+else
+    echo "Error: Invalid number of arguments."
+fi
+
